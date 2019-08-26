@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+	<head>
+
+		<title>Board</title>
+
+		{% load static %}
+
+		<link rel="stylesheet" href="{% static 'exam/css/styles.css' %}">
+
+	</head>
+
+	<body>
+
+	<div id = "wrapper">
+
+			<div id = "header">
+
+				<h1>Hi, {{user.first_name}} {{user.last_name}}!</h1>
+
+				<ul>
+
+					{% for message in messages %}
+
+						{% if message.extra_tags == "thought" %}
+
+						<li>{{message}}</li>
+
+						{% endif %}
+
+					{% endfor %}
+
+				</ul>
+
+				<form action = "/board/post_thought" method = "post">
+
+					{% csrf_token %}
+
+					<textarea name = "thought">Post a Great Thought Here!</textarea>
+
+					<button type = "submit">Add Thought!</button>
+
+				</form>
+
+			</div>
+
+			<a href = "/logout">log off</a>
+
+			<div id = "board">
+
+				{% if thoughts %}
+
+					{% for thought in thoughts %}
+
+						<div class = "thought_div">
+
+							<div class = "content_div">
+
+								<p>{{thought.user.first_name}} says:</p> 
+
+								<p class = "thought_content">{{thought.content}}</p>
+
+							</div>
+
+							<div class = "options_div">
+
+								<p>{{thought.number_likes}} people like this.</p>
+
+								<a href = "/board/{{thought.id}}/details">Details</a>
+
+								{% if user.id == thought.user.id %}
+
+
+									<form action = "/board/{{thought.id}}/delete" method = "post">
+
+										{% csrf_token %}
+
+										<button type = "submit">Delete</button>
+
+									</form>
+
+								{% endif %}
+
+							</div>
+
+						</div>
+
+					{% endfor %}
+
+				{% endif %}
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

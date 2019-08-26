@@ -1,0 +1,113 @@
+*{
+	vertical-align:top;
+}
+
+#register{
+	display:inline-block;
+	width:300px;
+	padding-bottom:10px;
+	border:1px solid black;
+	padding-left:20px;
+}
+
+#register button{
+	margin-left:105px;
+}
+
+
+#register div{
+	display:inline-block;
+	width:80px;
+	height:200;
+}
+
+#login{
+	display:inline-block;
+	width:280px;
+	padding-bottom:10px;
+	border:1px solid black;
+	padding-left:20px;
+}
+
+#login button{
+	margin-top:20px;
+	margin-left:125px;
+}
+
+#login div{
+	display:inline-block;
+	width:80px;
+	height:200;
+}
+
+#header{
+	display:inline-block;
+	width:800px;
+	padding-left:30px;
+	padding-bottom:5px;
+	border-bottom:1px solid black;
+}
+
+#header textarea{
+	width:400px;
+	height:50px;
+}
+
+
+#board{
+	display: inline-block;
+	width:600px;
+	margin-top:50px;
+
+}
+
+a{
+	font-size:150%;
+}
+
+#board a{
+	font-size:100%;
+}
+
+#board p{
+	display:inline-block;
+}
+
+#board .thought_div p{
+	vertical-align: bottom;
+}
+
+#board .thought_div .thought_content{
+	width:200px;
+	padding:10px;
+	border:1px solid black;
+}
+
+#board .thought_div .content_div{
+	display:inline-block;
+	width:400px;
+}
+
+#board .thought_div .content_div p{
+	vertical-align: top;
+}
+
+#board .thought_div .options_div{
+	display:inline-block;
+	width:190px;
+	padding-top:10px;
+}
+
+#board .thought_div .options_div form{
+	display:inline-block;
+}
+
+#board .thought_div .options_div a{
+	display:inline-block;
+	margin-top:15px;
+}
+
+#board .thought_div .options_div button{
+	display:inline-block;
+}
+

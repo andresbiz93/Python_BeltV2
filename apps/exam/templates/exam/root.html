@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+	<head>
+
+		<title>Login or Register</title>
+
+		{% load static %}
+
+		<link rel="stylesheet" href="{% static 'exam/css/styles.css' %}">
+
+
+	</head>
+
+	<body>
+
+		<h1>Welcome!</h1>
+
+		<div id = "register">
+
+			<h6>Register</h6>
+
+			{% if messages %}
+
+			<ul>
+
+				{% for message in messages %}
+
+					{% if message.extra_tags == "register" %}
+
+					<li>{{message}}</li>
+
+					{% endif %}
+
+				{% endfor %}
+
+			</ul>
+
+			{% endif %}
+
+			<div>
+
+					<p>First Name: </p>
+
+					<p>Last Name: </p>
+
+					<p>Email: </p>
+
+					<p>Password: </p>
+
+					<p>Confirm PW: </p>
+
+			</div>
+
+			<div>
+
+				<form action = "/create" method = "post">
+
+					{% csrf_token %}
+
+					<p><input type = "text" name = "first_name"></p>
+
+					<p><input type = "text" name = "last_name"></p>
+
+					<p><input type = "text" name = "email"></p>
+
+					<p><input type = "password" name = "password"></p>
+
+					<p><input type = "password" name = "pw_conf"></p>
+
+					<button type = "submit">Register</button>
+
+				</form>
+
+			</div>
+
+		</div>
+
+
+
+		<div id = "login">
+
+			<h6>Login</h6>
+
+			{% if messages %}
+
+			<ul>
+
+				{% for message in messages %}
+
+					{% if message.extra_tags == "login" %}
+
+					<li>{{message}}</li>
+
+					{% endif %}
+
+				{% endfor %}
+
+			</ul>
+
+			{% endif %}
+
+			<div>
+
+				<p>Email: </p>
+
+				<p>Password: </p>
+
+			</div>
+
+			<div>
+
+				<form action = "/login" method = "post">
+
+					{% csrf_token %}
+
+					<p><input type = "text" name = "email"></p>
+
+
+					<p><input type = "password" name = "password"></p>
+
+					<button type = "submit">Login</button>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

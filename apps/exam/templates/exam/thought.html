@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+	<head>
+
+		<title>Thought</title>
+
+		{% load static %}
+
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	    <link rel="stylesheet" href="{% static 'exam/css/thought_styles.css' %}">
+
+	</head>
+
+	<body>
+
+		<div id = "thought_detail">
+
+			<p>{{thought.user.first_name}} says:</p>
+
+			<p id = "content">{{thought.content}}</p>
+
+			{% if user not in thought.users_who_like.all %}
+
+				<form action = "/board/{{thought.id}}/like_thought" method = "post" id = "like_button">
+
+					{% csrf_token %}
+
+					<button type = "submit">Like</button>
+
+				</form>
+
+			{% else %}
+
+				<form action = "/board/{{thought.id}}/unlike_thought" method = "post" id = "unlike_button">
+
+					{% csrf_token %}
+
+					<button type = "submit">Unlike</button>
+
+				</form>
+
+			{% endif %}
+
+			{% if user.id == thought.user.id %}
+
+				<form action = "/board/{{thought.id}}/delete" method = "post" id = "delete_button">
+
+					{% csrf_token %}
+
+					<button type = "submit">Delete</button>
+
+				</form>
+
+			{% endif %}
+
+
+			<ul>
+
+				{% for message in messages %}
+
+					{% if message.extra_tags == "thought" %}
+
+					<li>{{message}}</li>
+
+					{% endif %}
+
+				{% endfor %}
+
+			</ul>
+
+		</div>
+
+		<a href = "/board">Dashboard</a>
+
+		<a href = "/logout">Logout</a>
+
+		{% if likers %}
+
+		<div id = "likers">
+
+			<p>People who liked this post:</p>
+
+			<table class = "table">
+
+		        <thead>
+
+		            <tr>
+
+		                <th>First Name</th>
+		                <th>Last Name</th>
+
+		            </tr>
+
+		        </thead>
+
+		        <tbody>
+
+		            {% for liker in likers %}
+
+						{% if liker.id != poster.id %}   
+
+			            <tr>
+
+		                    <td>{{liker.first_name}}</td>
+		                    <td>{{liker.last_name}}</td>
+
+			            </tr>
+
+			            {% endif %}
+
+		            {% endfor %}
+
+		            {% if poster_in %}
+
+		            <tr>
+
+		            	<td>{{poster.first_name}}</td>
+		            	<td>{{poster.last_name}}</td>
+
+		            </tr>
+
+		            {% endif %}
+
+		        </tbody>
+
+		    </table>
+
+		</div>
+
+		{% endif %}
+
+	</body>
+
+</html>

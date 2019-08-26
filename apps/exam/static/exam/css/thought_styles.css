@@ -1,0 +1,49 @@
+*{
+	vertical-align: top;
+}
+
+a{
+	margin-top:0px;
+	margin-left:50px;
+}
+
+#thought_detail{
+	width:600px;
+	display:inline-block;
+	padding-top:40px;
+	padding-left:40px;
+}
+
+#thought_detail p{
+	display:inline-block;
+	vertical-align: bottom;
+}
+
+#thought_detail #content{
+	width:400px;
+	padding:10px;
+	border:1px solid black;
+}
+
+#thought_detail #like_button{
+	display:inline-block;
+	margin-left:430px;
+}
+
+#thought_detail #unlike_button{
+	display:inline-block;
+	margin-left:430px;
+}
+
+#thought_detail #delete_button{
+	display:inline-block;
+	margin-top:5px;
+	margin-left:430px;
+}
+
+#likers{
+	display:inline-block;
+	width:400px;
+	padding-left:20px;
+}
+
